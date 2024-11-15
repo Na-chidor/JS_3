@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add and Display Array Elements</title>
+</head>
+<body>
+
+    <input type="text" id="inputElement" placeholder="Enter a value">
+    <button onclick="addElement()">Add</button>
+    <button onclick="displayElements()">Display</button>
+
+    <hr>
+
+    <div id="output"></div>
+
+    <script>
+        let elementsArray = [];
+
+        function addElement() {
+            const input = document.getElementById("inputElement").value;
+            if (input !== "") {
+                elementsArray.push(input);
+                document.getElementById("inputElement").value = ""; 
+            } else {
+                alert("Please enter a value.");
+            }
+        }
+
+        function displayElements() {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+
+            elementsArray.forEach((element, index) => {
+                const elementText = `Element ${index + 1} = ${element}`;
+                const paragraph = document.createElement("p");
+                paragraph.textContent = elementText;
+                outputDiv.appendChild(paragraph);
+            });
+        }
+    </script>
+
+</body>
+</html>
